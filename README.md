@@ -1,56 +1,207 @@
-# Optical Wave Simulation Project
+# Optical Wave Simulations
 
-This project models optical diffraction and interference using Python.
+Python simulations of diffraction, interference and Gaussian beam propagation.
+
+---
+
+## Overview
+
+This project contains Python simulations of several fundamental optical wave phenomena, including Fraunhofer single-slit diffraction, double-slit interference and Gaussian beam propagation.
+
+I developed these simulations independently to build my understanding of wave optics while improving my Python programming, numerical modelling and scientific visualisation skills. The project combines analytical physics with computational methods to investigate how light behaves in a range of optical systems.
+
+---
 
 ## Aim
 
-The aim was to investigate how light propagates through single and double slits, using numerical simulation and visualisation. This is relevant to optical physics, photonics, imaging systems and wave-based sensing technologies.
+The aim of this project was to investigate how light propagates through single and double slits, together with the propagation of Gaussian laser beams, using numerical simulation and visualisation. These phenomena are fundamental to optical physics and have applications in photonics, imaging systems, laser optics and wave-based sensing technologies.
+
+---
+
+## Features
+
+* Fraunhofer single-slit diffraction simulation
+* Double-slit interference with diffraction envelope
+* Comparison of interference patterns for different wavelengths
+* Gaussian beam propagation
+* Gaussian beam intensity profiles at multiple propagation distances
+* Clear, fully labelled visualisations generated using Matplotlib
+
+---
+
+## Technologies
+
+* Python
+* NumPy
+* Matplotlib
+
+---
 
 ## Physics
 
-The single-slit diffraction pattern is modelled using:
+### Single-Slit Diffraction
 
-I(theta) = I0 (sin(beta) / beta)^2
+The Fraunhofer diffraction pattern is modelled using
 
-where beta = pi a sin(theta) / lambda.
+```text
+                ⎛ sin(β) ⎞²
+I(θ) = I₀       ⎜────────⎟
+                ⎝   β    ⎠
+```
 
-The double-slit pattern combines the single-slit diffraction envelope with the interference term:
+where
 
-I(theta) = I0 (sin(beta) / beta)^2 cos^2(alpha)
+```text
+β = πa sin(θ) / λ
+```
 
-where alpha = pi d sin(theta) / lambda.
+with
+
+* **a** = slit width
+* **λ** = wavelength
+* **θ** = diffraction angle
+
+---
+
+### Double-Slit Interference
+
+The double-slit intensity is calculated by combining the single-slit diffraction envelope with the interference term
+
+```text
+                ⎛ sin(β) ⎞²
+I(θ) = I₀       ⎜────────⎟   cos²(α)
+                ⎝   β    ⎠
+```
+
+where
+
+```text
+α = πd sin(θ) / λ
+```
+
+and
+
+* **d** = slit separation
+
+---
+
+### Gaussian Beam Propagation
+
+The beam radius evolves according to
+
+```text
+                 ___________________
+                ╱          2
+w(z) = w₀ √ 1 + │ z / zR │
+               ╲___________________
+```
+
+where the Rayleigh range is
+
+```text
+zR = πw₀² / λ
+```
+
+The transverse intensity profile is modelled using the Gaussian beam equation, allowing the beam profile to be visualised as it propagates away from the beam waist.
+
+The simulation shows how a laser beam spreads after its waist and how the transverse intensity profile becomes broader and lower with increasing propagation distance. This demonstrates how physical modelling and Python visualisation can be used to investigate optical beam behaviour.
+
+---
 
 ## Methods
 
-Python was used to:
-- Define physical parameters including wavelength, slit width and slit separation.
-- Calculate intensity as a function of angle.
-- Convert angular position to screen position.
-- Plot and compare diffraction and interference patterns.
-- Investigate the effect of changing wavelength.
+Python was used to
+
+* define physical parameters including wavelength, slit width and slit separation
+* calculate diffraction and interference intensity as a function of angle
+* convert angular position into screen position
+* generate and compare diffraction, interference and Gaussian beam plots
+* investigate how changing physical parameters affects optical behaviour
+* produce publication-quality visualisations using Matplotlib
+
+---
+
+## Example Results
+
+### Single-Slit Diffraction
+
+![Single-Slit Diffraction](figures/single_slit_diffraction.png)
+
+---
+
+### Double-Slit Interference
+
+![Double-Slit Interference](figures/double_slit_interference.png)
+
+---
+
+### Effect of Wavelength on Double-Slit Interference
+
+![Wavelength Comparison](figures/wavelength_comparison.png)
+
+---
+
+### Gaussian Beam Propagation
+
+![Gaussian Beam Radius](figures/gaussian_beam_radius.png)
+
+---
+
+### Gaussian Beam Intensity Profiles
+
+![Gaussian Beam Intensity Profiles](figures/gaussian_intensity_profiles.png)
+
+---
 
 ## Key Findings
 
-- A narrower slit produces a wider diffraction pattern.
-- Double slits produce high-frequency interference fringes within a broader single-slit envelope.
-- Longer wavelengths produce wider fringe spacing.
-- The simulation demonstrates how wave interference can be modelled computationally, with relevance to optical and photonic systems.
+* A narrower slit produces a broader diffraction pattern.
+* Double slits produce closely spaced interference fringes within a wider single-slit diffraction envelope.
+* Increasing the wavelength increases the spacing between interference fringes.
+* Gaussian beams spread after the beam waist, causing the beam radius to increase and the peak intensity to decrease.
+* The simulations demonstrate how analytical wave optics can be modelled computationally, with relevance to optical physics, photonics and laser-based systems.
 
-## Tools Used
+---
 
-Python, NumPy, Matplotlib
+## Running the Project
 
+Install the required packages
 
-## Gaussian Beam Propagation
+```bash
+pip install -r requirements.txt
+```
 
-I also modelled Gaussian laser beam propagation, which is relevant to optical systems, imaging, photonics and laser-based measurement.
+Run the diffraction and interference simulations
 
-The beam radius is given by:
+```bash
+python diffraction_simulation.py
+```
 
-w(z) = w0 sqrt(1 + (z / zR)^2)
+Run the Gaussian beam simulations
 
-where zR = pi w0^2 / lambda is the Rayleigh range.
+```bash
+python gaussian_beam.py
+```
 
-The simulation shows how a laser beam spreads after its waist and how the transverse intensity profile becomes wider and lower with propagation distance.
+The generated figures are automatically saved in the `figures` directory.
 
-This demonstrates the use of physical modelling and Python visualisation to analyse optical beam behaviour.
+---
+
+## Possible Extensions
+
+Potential future developments include
+
+* Fresnel diffraction
+* Airy disk diffraction from circular apertures
+* Thin-film interference
+* Interactive parameter controls
+* Animated beam propagation
+* Additional optical systems and wave phenomena
+
+---
+
+## Author
+
+**Olivia Wooldridge**
+
+Physics undergraduate at the University of Bath with interests in computational physics, numerical modelling, scientific programming and software engineering.

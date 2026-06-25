@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+import os
+
+os.makedirs("figures", exist_ok=True)
+
 
 def single_slit_intensity(theta, wavelength, slit_width):
     """
